@@ -1,0 +1,39 @@
+.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #333;
+  }
+  
+  /* Estilização do Logo */
+  .logo {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700; /* Cor dourada */
+    text-transform: lowercase;
+    letter-spacing: 2px;
+  }
+  
+  /* Estilização do Carrinho */
+  .cartIcon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffd700; /* Cor dourada */
+  
+    i {
+      font-size: 1.2rem;
+    }
+  
+    .cartCount {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
