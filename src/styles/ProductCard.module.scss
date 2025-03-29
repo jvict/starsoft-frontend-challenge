@@ -1,53 +1,73 @@
 .card {
-    background-color: #1a1a1a;
-    border-radius: 12px;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-    padding: 16px;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .productImage {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-  }
-  
-  /* Detalhes do Produto */
-  .productDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .productName {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .productPrice {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ff6a00;
-  }
-  
-  .buyButton {
-    background-color: #ff6a00;
+  background-color: #191a20;
+  border-radius: 12px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Detalhes do Produto */
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+}
+
+.productName {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  line-height: 140%;
+}
+
+/* Preço e Ícone */
+.productPrice {
+  display: flex; /* Alinha horizontalmente o ícone e o texto */
+  align-items: center; /* Centraliza verticalmente */
+  column-gap: 8px; /* Espaço horizontal entre o ícone e o texto */
+  margin-bottom: 1rem;  
+}
+
+.ellipseIcon {
+  width: 24px; /* Define o tamanho do ícone */
+  height: 24px;
+}
+
+.priceValue {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+}
+
+.buyButton {
+  font-family: 'Poppins', sans-seri;
+  width: 100%;
+  background-color: #393939;
+  color: white;
+  border: none;
+  padding: 10px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+
+
+  &:hover {
+    background-color: #FF8310;
     color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
+  }
   
-    &:hover {
-      background-color: #e65b00;
-    }
   }
