@@ -1,36 +1,51 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
-import { increaseQuantity, decreaseQuantity, removeItem } from '../store/slices/cartSlie';
-import styles from '../styles/OverlayCheckout.module.scss';
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import CartItem from "./CartItem";
+import styles from "../styles/OverlayCheckout.module.scss";
+import Ellipse from "../utils/images/Ellipse 770.svg";
+import Arrow from "../utils/images/Arrow - Left.svg";
 
-const OverlayCheckout: React.FC = () => {
+interface OverlayCheckoutProps {
+  isVisible: boolean;
+  onClose: () => void;
+}
+
+const OverlayCheckout: React.FC<OverlayCheckoutProps> = ({ isVisible, onClose }) => {
   const { items, total } = useSelector((state: RootState) => state.cart);
-  const dispatch = useDispatch();
+
+  if (!isVisible) return null;
 
   return (
     <div className={styles.overlay}>
-      <h2>Mochila de Compras</h2>
+      {/* Barra Superior */}
+      <div className={styles.containerBar}>
+        {/* Botão Voltar */}
+        <button className={styles.backButton} onClick={onClose}>
+          <img src={Arrow.src} className={styles.arrowIcon} />
+        </button>
+
+        {/* Título Centralizado */}
+        <p className={styles.title}>Mochila de Compras</p>
+      </div>
+
+      {/* Lista de Itens no Carrinho */}
       <div className={styles.cartItems}>
         {items.map((item) => (
-          <div className={styles.cartItem} key={item.id}>
-            <img src={item.image} alt={item.name} />
-            <div>
-              <h4>{item.name}</h4>
-              <span>{item.price} ETH</span>
-              <div>
-                <button onClick={() => dispatch(decreaseQuantity(item.id))}>-</button>
-                {item.quantity}
-                <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
-              </div>
-            </div>
-            <button onClick={() => dispatch(removeItem(item.id))}>🗑️</button>
-          </div>
+          <CartItem key={item.id} item={item} />
         ))}
       </div>
+
+      {/* Total */}
       <div className={styles.total}>
-        Total: {total} ETH
+        TOTAL
+        <div className={styles.sectionIconTotal}>
+          <img src={Ellipse.src} />
+          <span>{total} ETH</span>
+        </div>
       </div>
-      <button>Finalizar Compra</button>
+
+      {/* Botão Finalizar Compra */}
+      <button className={styles.checkoutButton}>FINALIZAR COMPRA</button>
     </div>
   );
 };
