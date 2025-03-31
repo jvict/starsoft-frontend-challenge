@@ -1,46 +1,55 @@
 "use client";
-import { useState } from "react";
-import Navbar from "../components/Navbar";
-import { useQuery } from "react-query";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../services/productService";
 import ProductCard from "../components/ProductCard";
-import OverlayCheckout from "../components/OverlayCheckout"; // Importa o overlay
+import OverlayCheckout from "../components/OverlayCheckout";
 import styles from "../styles/Cart.module.scss";
-import Footer from "@/components/Footer";
+import { setProducts, setLoading, setError } from "../store/slices/productSlice";
+import { RootState } from "../store";
 
 const Cart = () => {
-  const { data: products = [], isLoading, isError } = useQuery("products", fetchProducts);
+  const dispatch = useDispatch();
+  const { products, isLoading, error } = useSelector((state: RootState) => state.products);
   const [visibleProducts, setVisibleProducts] = useState(8);
-  const [isOverlayVisible, setOverlayVisible] = useState(false); // Controla visibilidade do overlay
+  const [isOverlayVisible, setOverlayVisible] = useState(false);
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    fetchProducts()
+      .then((data) => {
+        dispatch(setProducts(data.data));
+      })
+      .catch((err) => {
+        dispatch(setError(err.message));
+      });
+  }, [dispatch]);
 
   const handleLoadMore = () => {
     setVisibleProducts((prev) => prev + 8);
   };
 
-  const progressPercentage = products?.data
-    ? Math.min((visibleProducts / products.data.length) * 100, 100)
+  const progressPercentage = products
+    ? Math.min((visibleProducts / products.length) * 100, 100)
     : 0;
 
   if (isLoading) {
     return <p>Carregando produtos...</p>;
   }
 
-  if (isError) {
-    return <p>Erro ao carregar os produtos...</p>;
+  if (error) {
+    return <p>Erro ao carregar os produtos: {error}</p>;
   }
 
   return (
     <div className={styles.container}>
-      <Navbar />
-
       <div className={styles.mainContent}>
-        {/* Grid de Produtos */}
         <div className={styles.products}>
-          {products.data.slice(0, visibleProducts).map((product: any) => (
+          {products.slice(0, visibleProducts).map((product: any) => (
             <ProductCard
               key={product.id}
               product={product}
-              onAddToCart={() => setOverlayVisible(true)} // Controla a exibição do overlay
+              onAddToCart={() => setOverlayVisible(true)}
             />
           ))}
         </div>
@@ -53,18 +62,14 @@ const Cart = () => {
             ></div>
           </div>
           <button className={styles.loadMore} onClick={handleLoadMore}>
-            {visibleProducts < products.data.length ? "Carregar mais" : "Você já viu tudo"}
+            {visibleProducts < products.length ? "Carregar mais" : "Você já viu tudo"}
           </button>
         </div>
       </div>
-
-      {/* Overlay de Checkout */}
       <OverlayCheckout
         isVisible={isOverlayVisible}
         onClose={() => setOverlayVisible(false)}
       />
-
-      <Footer />
     </div>
   );
 };
