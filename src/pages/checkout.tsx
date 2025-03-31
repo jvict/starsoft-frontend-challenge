@@ -20,7 +20,7 @@ const Checkout = () => {
         <title>Checkout - Mochila de Compras</title>
         <meta name="description" content="Finalize sua compra e revise os itens em sua mochila de compras." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://starsoft-frontend-challenge/checkout" />
+        <link rel="canonical" href="https://starsoft-frontend-challenge-mu.vercel.app/checkout" />
       </Head>
 
       <main className={styles.checkoutContainer}>
