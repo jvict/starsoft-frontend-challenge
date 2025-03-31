@@ -8,6 +8,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    border-radius: 8px;
+  }
 }
 
 .productImage {
@@ -15,30 +25,52 @@
   height: auto;
   border-radius: 12px;
   margin-bottom: 1rem;
+
+  /* Ajustes para dispositivos menores */
+  @media (max-width: 768px) {
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 8px;
+  }
 }
 
-/* Detalhes do Produto */
 .productDetails {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: self-start;
+  align-items: flex-start;
+
+  /* Ajuste responsivo */
+  @media (max-width: 480px) {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .productName {
   font-size: 18px;
-  margin-bottom: 0.5rem;
   font-weight: 300;
   font-family: "Poppins", sans-serif;
-  line-height: 140%;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 }
 
-/* Preço e Ícone */
 .productPrice {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   column-gap: 8px;
-  margin-bottom: 1rem;  
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 }
 
 .ellipseIcon {

@@ -14,25 +14,32 @@
   flex: 1;
   padding-top: 50px;
   padding-bottom: 50px;
-  
 }
 
 .mainContent h1 {
   font-size: 2rem;
   margin-bottom: 2rem;
   font-weight: bold;
-
 }
 
+/* Grid de Produtos */
 .products {
-  display: grid; 
+  display: grid;
   gap: 16px; 
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   justify-content: center;
   padding: 16px;
   width: 100%;
   max-width: 1200px; 
-  margin: 0 auto; 
+  margin: 0 auto;
+
+
+  @media (max-width: 369px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+    margin: 10px;
+  }
+
+
 }
 
 /* Contêiner do botão e barra de progresso */
@@ -40,15 +47,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 /* Barra de Progresso */
 .progressContainer {
-  width: 200px; 
-  height: 8px; 
-  background-color: #333; 
-  border-radius: 4px; 
+  width: 200px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 4px;
   overflow: hidden;
   position: relative;
 }
@@ -56,13 +63,13 @@
 /* Indicador da Barra de Progresso */
 .progressBar {
   height: 100%;
-  background-color: #ff8100; 
-  transition: width 0.3s ease-in-out; 
+  background-color: #ff8100;
+  transition: width 0.3s ease-in-out;
 }
 
 /* Botão "Carregar mais" */
 .loadMore {
-  width: 200px; 
+  width: 200px;
   background-color: #393939;
   color: #fff;
   border: #393939;
@@ -79,5 +86,43 @@
     background-color: #ff6a00;
     color: white;
   }
-  
-}  
+}
+
+/* Media Queries para responsividade */
+
+/* Telas menores (máximo de 768px) */
+@media (max-width: 768px) {
+  .mainContent h1 {
+    font-size: 1.5rem;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Torna os cards menores em telas menores */
+    gap: 12px; /* Reduz o espaçamento */
+  }
+
+  .loadMore {
+    width: 180px; /* Ajusta a largura do botão */
+    font-size: 12px;
+  }
+}
+
+/* Telas muito pequenas (máximo de 480px) */
+@media (max-width: 480px) {
+  .mainContent h1 {
+    font-size: 1.2rem;
+  }
+
+  .products {
+    grid-template-columns: 1fr; /* Apenas um item por linha */
+  }
+
+  .progressContainer {
+    width: 150px; /* Ajusta o tamanho da barra de progresso */
+  }
+
+  .loadMore {
+    width: 150px; /* Reduz o botão */
+    font-size: 10px;
+  }
+}

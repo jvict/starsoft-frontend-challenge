@@ -4,6 +4,10 @@
   padding: 0rem 2rem;
   color: #fff;
   font-family: "Poppins", sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
 }
 
 .containerBar {
@@ -13,6 +17,10 @@
   justify-content: flex-start; 
   width: 100%; 
   height: 80px; 
+
+  @media (max-width: 768px) {
+    height: 60px;
+  }
 }
 
 .backButton {
@@ -42,31 +50,33 @@
   text-align: center;
   margin: 0;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 }
 
 .cartItems {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding-right: 10px;
 
+  @media (max-width: 768px) {
+    padding-right: 0;
+  }
 }
-
 
 .total {
   font-weight: 600;
   font-size: 1.2rem;
-  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  font-family: "Poppins", sans-serif;
 
-  .sectionIconTotal{
-    display: flex; 
-    align-items: center; 
-    column-gap: 8px; 
-    margin-bottom: 1rem;  
+  @media (max-width: 768px) {
+    font-size: 1rem;
   }
 }
 
@@ -86,5 +96,15 @@
 
   &:hover {
     background: #e65b00;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 10px;
   }
 }
