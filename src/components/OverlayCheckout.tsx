@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 import styles from "../styles/OverlayCheckout.module.scss";
 import Ellipse from "../utils/images/Ellipse 770.svg";
 import Arrow from "../utils/images/Arrow - Left.svg";
+import FinishedButton from "./FinishedButton";
 
 
 interface OverlayCheckoutProps {
@@ -20,7 +21,7 @@ const OverlayCheckout: React.FC<OverlayCheckoutProps> = ({ isVisible, onClose })
   return (
     <div className={styles.overlay}>
       <div className={styles.containerBar}>
-        <button className={styles.backButton} onClick={onClose}>
+        <button className={styles.backButton} onClick={onClose}  aria-label="Voltar">
           <img src={Arrow.src} className={styles.arrowIcon} />
         </button>
         <p className={styles.title}>Mochila de Compras</p>
@@ -40,13 +41,7 @@ const OverlayCheckout: React.FC<OverlayCheckoutProps> = ({ isVisible, onClose })
         </div>
       </div>
 
-      <button
-        className={styles.backButton}
-        onClick={onClose}
-        aria-label="Voltar"
-      >
-        <img src={Arrow.src} className={styles.arrowIcon} alt="" />
-      </button>
+      <FinishedButton/>
     </div>
   );
 };
