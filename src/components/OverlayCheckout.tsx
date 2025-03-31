@@ -4,6 +4,7 @@ import CartItem from "./CartItem";
 import styles from "../styles/OverlayCheckout.module.scss";
 import Ellipse from "../utils/images/Ellipse 770.svg";
 import Arrow from "../utils/images/Arrow - Left.svg";
+import FinishedButton from "./FinishedButton";
 
 interface OverlayCheckoutProps {
   isVisible: boolean;
@@ -17,25 +18,19 @@ const OverlayCheckout: React.FC<OverlayCheckoutProps> = ({ isVisible, onClose })
 
   return (
     <div className={styles.overlay}>
-      {/* Barra Superior */}
       <div className={styles.containerBar}>
-        {/* Botão Voltar */}
         <button className={styles.backButton} onClick={onClose}>
           <img src={Arrow.src} className={styles.arrowIcon} />
         </button>
-
-        {/* Título Centralizado */}
         <p className={styles.title}>Mochila de Compras</p>
       </div>
 
-      {/* Lista de Itens no Carrinho */}
       <div className={styles.cartItems}>
         {items.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </div>
 
-      {/* Total */}
       <div className={styles.total}>
         TOTAL
         <div className={styles.sectionIconTotal}>
@@ -43,9 +38,8 @@ const OverlayCheckout: React.FC<OverlayCheckoutProps> = ({ isVisible, onClose })
           <span>{total} ETH</span>
         </div>
       </div>
-
-      {/* Botão Finalizar Compra */}
-      <button className={styles.checkoutButton}>FINALIZAR COMPRA</button>
+      
+      <FinishedButton  onClose={()=>{onClose()}}/>
     </div>
   );
 };

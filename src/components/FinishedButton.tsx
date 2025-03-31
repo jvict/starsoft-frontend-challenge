@@ -1,18 +1,29 @@
-// components/FinalizeButton.tsx
 import { useState } from "react";
 import styles from "../styles/FinishedButton.module.scss";
+import { useDispatch } from "react-redux";
+import { clearState } from "@/store/slices/cartSlie";
 
-const FinalizeButton = () => {
+
+interface FinishedButtonProps {
+  onClose?: () => void;
+}
+
+const FinishedButton : React.FC<FinishedButtonProps> = ({onClose}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
+ 
     if (isLoading || isCompleted) return;
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       setIsCompleted(true);
+
+      dispatch(clearState());
+      if (onClose) onClose()
     }, 3000); 
   };
 
@@ -27,4 +38,4 @@ const FinalizeButton = () => {
   );
 };
 
-export default FinalizeButton;
+export default FinishedButton;

@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../../styles/Product.module.scss";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import Ellipse from "../../utils/images/Ellipse 770.svg";
 import { RootState } from "../../store";
 import { addToCart } from "../../store/slices/cartSlie";
@@ -67,7 +65,6 @@ const Product = () => {
 
     return (
         <div className={styles.productContainer}>
-            <Navbar />
             <div className={styles.productContent}>
                 <img src={product.image} alt={product.name} className={styles.productImage} />
                 <div className={styles.productInfo}>
@@ -80,7 +77,6 @@ const Product = () => {
                     <button className={styles.buyButton} onClick={handleBuyClick}>COMPRAR</button>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

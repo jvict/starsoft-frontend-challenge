@@ -6,7 +6,7 @@ import styles from "../styles/Checkout.module.scss";
 import CartItem from "@/components/CartItem";
 import Arrow from "../utils/images/Arrow - Left.svg";
 import Ellipse from "../utils/images/Ellipse 770.svg";
-import FinalizeButton from "../components/FinishedButton";
+import FinishedButton from "../components/FinishedButton";
 
 const Checkout = () => {
   const { items, total } = useSelector((state: RootState) => state.cart);
@@ -37,7 +37,7 @@ const Checkout = () => {
         </div>
       </div>
 
-      <FinalizeButton />
+      <FinishedButton />
     </div>
   );
 };
