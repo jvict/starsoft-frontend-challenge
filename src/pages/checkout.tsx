@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useRouter } from "next/router";
+import Head from 'next/head';
+import Image from 'next/image';
 import styles from "../styles/Checkout.module.scss";
 import CartItem from "@/components/CartItem";
 import Arrow from "../utils/images/Arrow - Left.svg";
@@ -13,32 +15,44 @@ const Checkout = () => {
   const router = useRouter();
 
   return (
-    <div className={styles.checkoutContainer}>
-      <div className={styles.containerBar}>
+    <>
+      <Head>
+        <title>Checkout - Mochila de Compras</title>
+        <meta name="description" content="Finalize sua compra e revise os itens em sua mochila de compras." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://seusite.com/checkout" />
+      </Head>
 
-        <button className={styles.backButton} onClick={() => router.back()}>
-          <img src={Arrow.src} className={styles.arrowIcon} />
-        </button>
+      <main className={styles.checkoutContainer}>
+        <header className={styles.containerBar}>
+          <button 
+            className={styles.backButton} 
+            onClick={() => router.back()}
+            aria-label="Voltar para a página anterior"
+          >
+            <Image src={Arrow} alt="" width={24} height={24} className={styles.arrowIcon} />
+          </button>
 
-        <p className={styles.title}>Mochila de Compras</p>
-      </div>
+          <h1 className={styles.title}>Mochila de Compras</h1>
+        </header>
 
-      <div className={styles.cartItems}>
-        {items.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
-      </div>
+        <section className={styles.cartItems} aria-label="Itens na mochila">
+          {items.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </section>
 
-      <div className={styles.total}>
-        TOTAL
-        <div className={styles.sectionIconTotal}>
-          <img src={Ellipse.src} />
-          <span>{total} ETH</span>
-        </div>
-      </div>
+        <footer className={styles.total}>
+          <h2>TOTAL</h2>
+          <div className={styles.sectionIconTotal}>
+            <Image src={Ellipse} alt="" width={24} height={24} />
+            <span>{total} ETH</span>
+          </div>
+        </footer>
 
-      <FinishedButton />
-    </div>
+        <FinishedButton />
+      </main>
+    </>
   );
 };
 
