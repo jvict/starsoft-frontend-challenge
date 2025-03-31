@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalar dependências
-RUN npm install --legacy-peer-deps
+RUN yarn install
 
 # Copiar todos os arquivos de código
 COPY . .
@@ -17,7 +17,7 @@ COPY . .
 RUN npx eslint ./src --max-warnings=0
 
 # Compilar o Next.js (só prossegue se o ESLint não falhar)
-RUN npm run build
+RUN yarn build
 
 # Expor a porta padrão do Next.js
 EXPOSE 3000

@@ -5,10 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Mapeia a porta 3000 do contêiner para a porta 3000 local
+      - "3000:3000" 
     volumes:
-      - .:/app # Mapeia os arquivos do projeto local para o contêiner
-      - /app/node_modules # Ignora os node_modules locais
+      - .:/app 
+      - /app/node_modules 
     environment:
-      - NODE_ENV=production # Define a variável de ambiente como produção
-    container_name: nextjs_app # Dá um nome ao contêiner
+      - NODE_ENV=production 
+    container_name: nextjs_app 

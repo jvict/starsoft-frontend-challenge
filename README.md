@@ -52,6 +52,11 @@
      ```bash
      docker-compose up
      ```
+    - Caso algum erro no comando anterior rode o comando abaixo e depois volte a o comando do container:
+     ```bash
+     yarn build
+     ```
+
    - Acesse a aplicação em [http://localhost:3000](http://localhost:3000).
 
 3. **Comandos Adicionais**:
