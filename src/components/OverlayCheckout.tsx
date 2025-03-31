@@ -39,8 +39,14 @@ const OverlayCheckout: React.FC<OverlayCheckoutProps> = ({ isVisible, onClose })
           <span>{total} ETH</span>
         </div>
       </div>
-      
-      <FinishedButton  onClose={()=>{onClose()}}/>
+
+      <button
+        className={styles.backButton}
+        onClick={onClose}
+        aria-label="Voltar"
+      >
+        <img src={Arrow.src} className={styles.arrowIcon} alt="" />
+      </button>
     </div>
   );
 };
