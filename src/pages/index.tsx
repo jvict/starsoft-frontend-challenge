@@ -1,13 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { fetchProducts } from "../services/productService";
-import ProductCard from "../components/ProductCard";
-import OverlayCheckout from "../components/OverlayCheckout";
-import styles from "../styles/Cart.module.scss";
 import { setProducts, setLoading, setError } from "../store/slices/productSlice";
 import { RootState } from "../store";
 import { Product } from "./product/[id]";
+import styles from "../styles/Cart.module.scss";
+
+// Lazy load components
+const ProductCard = dynamic(() => import("../components/ProductCard"));
+const OverlayCheckout = dynamic(() => import("../components/OverlayCheckout"));
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -43,35 +46,52 @@ const Cart = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.mainContent}>
-        <div className={styles.products}>
-          {products.slice(0, visibleProducts).map((product: Product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAddToCart={() => setOverlayVisible(true)}
-            />
-          ))}
-        </div>
+    <>
+      <Head>
+        <title>Catálogo de Produtos - Sua Loja</title>
+        <meta name="description" content="Explore nossa seleção de produtos e adicione itens à sua mochila de compras." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://seusite.com/cart" />
+      </Head>
 
-        <div className={styles.loadMoreSection}>
-          <div className={styles.progressContainer}>
-            <div
-              className={styles.progressBar}
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
+      <main className={styles.container}>
+        <h1 className={styles.visuallyHidden}>Catálogo de Produtos</h1>
+        
+        <section className={styles.mainContent}>
+          <div className={styles.products} role="list">
+            {products.slice(0, visibleProducts).map((product: Product) => (
+              <div key={product.id} role="listitem">
+                <ProductCard
+                  product={product}
+                  onAddToCart={() => setOverlayVisible(true)}
+                />
+              </div>
+            ))}
           </div>
-          <button className={styles.loadMore} onClick={handleLoadMore}>
-            {visibleProducts < products.length ? "Carregar mais" : "Você já viu tudo"}
-          </button>
-        </div>
-      </div>
+
+          <div className={styles.loadMoreSection}>
+            <div className={styles.progressContainer} role="progressbar" aria-valuenow={progressPercentage} aria-valuemin={0} aria-valuemax={100}>
+              <div
+                className={styles.progressBar}
+                style={{ width: `${progressPercentage}%` }}
+              ></div>
+            </div>
+            <button 
+              className={styles.loadMore} 
+              onClick={handleLoadMore}
+              disabled={visibleProducts >= products.length}
+            >
+              {visibleProducts < products.length ? "Carregar mais" : "Você já viu tudo"}
+            </button>
+          </div>
+        </section>
+      </main>
+
       <OverlayCheckout
         isVisible={isOverlayVisible}
         onClose={() => setOverlayVisible(false)}
       />
-    </div>
+    </>
   );
 };
 

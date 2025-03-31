@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 import styles from "../styles/OverlayCheckout.module.scss";
 import Ellipse from "../utils/images/Ellipse 770.svg";
 import Arrow from "../utils/images/Arrow - Left.svg";
-import FinishedButton from "./FinishedButton";
+
 
 interface OverlayCheckoutProps {
   isVisible: boolean;
