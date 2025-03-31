@@ -1,0 +1,64 @@
+.productContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .productContent {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    flex: 1;
+  }
+  
+  .productImage {
+    width: 50%;
+    max-width: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .productName {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .productDescription {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .productPrice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .ethIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .buyButton {
+    background-color: #FF8310;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #E65B00;
+    }
+  }
