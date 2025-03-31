@@ -12,8 +12,8 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <img src={Logo.src} alt="Starsoft Logo" className={styles.logoImage} />
+      <div>
+        <img src={Logo.src} alt="Starsoft Logo" className={styles.logoImage} onClick={()=>{router.push("/")}}/>
       </div>
       <div className={styles.cartIcon}>
         <img src={BagtIcon.src} alt="Carrinho" className={styles.basketIcon} onClick={() => router.push("/checkout")} />
