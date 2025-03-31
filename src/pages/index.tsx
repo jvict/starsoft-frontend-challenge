@@ -47,7 +47,7 @@ const Cart = () => {
             content="Explore nossa seleção de produtos e adicione itens à sua mochila de compras."
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="canonical" href="https://seusite.com/cart" />
+          <link rel="canonical" href="https://starsoft-frontend-challenge" />
         </Head>
     
         <main className={styles.container}>
