@@ -1,3 +1,4 @@
+import React from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/Navbar.module.scss";
 import BagtIcon from "../utils/images/Bag.svg"; 
@@ -8,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const router = useRouter();
-  const { items, total } = useSelector((state: RootState) => state.cart);
+  const { items } = useSelector((state: RootState) => state.cart);
 
   return (
     <nav className={styles.navbar}>

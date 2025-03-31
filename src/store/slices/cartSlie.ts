@@ -4,7 +4,7 @@ interface Product {
   id: string;
   name: string;
   price: number;
-  quantity: number;
+  quantity?: number;
   image: string;
   description: string
 }
@@ -26,7 +26,7 @@ const cartSlice = createSlice({
     addToCart(state, action: PayloadAction<Product>) {
       const existingItem = state.items.find((item) => item.id === action.payload.id);
       if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity! += 1;
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
       }
@@ -35,14 +35,14 @@ const cartSlice = createSlice({
     increaseQuantity(state, action: PayloadAction<string>) {
       const item = state.items.find((item) => item.id === action.payload);
       if (item) {
-        item.quantity += 1;
+        item.quantity! += 1;
         state.total += item.price;
       }
     },
     decreaseQuantity(state, action: PayloadAction<string>) {
       const item = state.items.find((item) => item.id === action.payload);
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
+      if (item && item.quantity! > 1) {
+        item.quantity! -= 1;
         state.total -= item.price;
       }
     },
@@ -50,7 +50,7 @@ const cartSlice = createSlice({
       const index = state.items.findIndex((item) => item.id === action.payload);
       if (index !== -1) {
         const removedItem = state.items[index];
-        state.total -= removedItem.price * removedItem.quantity;
+        state.total -= removedItem.price * removedItem.quantity!;
         state.items.splice(index, 1);
       }
     },

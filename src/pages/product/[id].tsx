@@ -1,4 +1,4 @@
-"use client";
+import React from "react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import { addToCart } from "../../store/slices/cartSlie";
 import { fetchProducts } from "../../services/productService";
 import { setProducts } from "../../store/slices/productSlice"; 
 
-interface Product {
+export interface Product {
     id: string;
     name: string;
     price: number;

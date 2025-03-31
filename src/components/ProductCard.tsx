@@ -1,4 +1,4 @@
-"use client";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slices/cartSlie";
 import styles from "../styles/ProductCard.module.scss";
@@ -11,7 +11,7 @@ interface ProductProps {
     name: string;
     price: number;
     image: string;
-    quantity: number;
+    quantity?: number;
     description: string;
   };
   onAddToCart: () => void;

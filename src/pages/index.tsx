@@ -1,4 +1,4 @@
-"use client";
+import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../services/productService";
@@ -7,6 +7,7 @@ import OverlayCheckout from "../components/OverlayCheckout";
 import styles from "../styles/Cart.module.scss";
 import { setProducts, setLoading, setError } from "../store/slices/productSlice";
 import { RootState } from "../store";
+import { Product } from "./product/[id]";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Cart = () => {
     <div className={styles.container}>
       <div className={styles.mainContent}>
         <div className={styles.products}>
-          {products.slice(0, visibleProducts).map((product: any) => (
+          {products.slice(0, visibleProducts).map((product: Product) => (
             <ProductCard
               key={product.id}
               product={product}
