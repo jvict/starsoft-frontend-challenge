@@ -14,7 +14,7 @@ const FinishedButton: React.FC<FinishedButtonProps> = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const dispatch = useDispatch();
-  const { items, total } = useSelector((state: RootState) => state.cart);
+  const { total } = useSelector((state: RootState) => state.cart);
 
   const handleClick = () => {
     if (total > 0) {
