@@ -1,136 +1,132 @@
-.card {
-  background-color: #191a20;
-  border-radius: 12px;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-  padding: 16px;
-  text-align: center;
-  width: 100%;
+.productContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  min-height: 100vh;
 
-  /* Ajuste responsivo */
+  /* Responsividade */
   @media (max-width: 768px) {
-    padding: 12px;
-    border-radius: 10px;
+    padding: 1rem;
+  }
+}
+
+.productContent {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  flex: 1;
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    flex-direction: column; /* Ajusta para coluna em tablets */
+    padding: 1rem;
+    gap: 1.5rem;
   }
 
   @media (max-width: 480px) {
-    padding: 10px;
-    border-radius: 8px;
+    padding: 0.5rem;
+    gap: 1rem; /* Reduz o espaço entre os elementos */
   }
 }
 
 .productImage {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 1rem;
+  width: 50%;
+  max-width: 500px;
+  object-fit: cover;
+  border-radius: 8px;
 
-  /* Ajustes para dispositivos menores */
+  /* Responsividade */
   @media (max-width: 768px) {
-    border-radius: 10px;
-  }
-
-  @media (max-width: 480px) {
-    border-radius: 8px;
+    width: 100%; /* Ocupa 100% da largura em telas menores */
   }
 }
 
-.productDetails {
+.productInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  gap: 1rem;
 
-  /* Ajuste responsivo */
-  @media (max-width: 480px) {
+  /* Responsividade */
+  @media (max-width: 768px) {
+    text-align: center; /* Centraliza o conteúdo em tablets */
     align-items: center;
-    text-align: center; 
   }
 }
 
 .productName {
-  font-size: 18px;
-  font-weight: 300;
-  font-family: "Poppins", sans-serif;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
 
+  /* Responsividade */
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 1.5rem; /* Reduz o tamanho da fonte para tablets */
   }
 
   @media (max-width: 480px) {
-    font-size: 14px;
+    font-size: 1.2rem; /* Reduz ainda mais o tamanho no mobile */
+  }
+}
+
+.productDescription {
+  font-size: 1rem;
+  color: #666;
+
+  /* Responsividade */
+  @media (max-width: 480px) {
+    font-size: 0.9rem; /* Diminui a fonte para celulares */
   }
 }
 
 .productPrice {
   display: flex;
   align-items: center;
-  column-gap: 8px;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    justify-content: center; /* Centraliza o preço em tablets */
+  }
 
   @media (max-width: 480px) {
-    justify-content: center;
+    font-size: 1.2rem; /* Reduz o tamanho da fonte no mobile */
   }
 }
 
-.ellipseIcon {
+.ethIcon {
   width: 24px;
   height: 24px;
 
-  @media (max-width: 768px) {
+  /* Responsividade */
+  @media (max-width: 480px) {
     width: 20px;
     height: 20px;
-  }
-
-  @media (max-width: 480px) {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-.priceValue {
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: #ffffff;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 12px;
   }
 }
 
 .buyButton {
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-  background-color: #393939;
+  background-color: #FF8310;
   color: white;
   border: none;
-  padding: 10px 6px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 5px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #ff8310;
-    color: white;
+    background-color: #E65B00;
   }
 
+  /* Responsividade */
   @media (max-width: 768px) {
-    font-size: 11px;
-    padding: 8px 5px;
+    font-size: 0.9rem; /* Ajusta fonte no tablet */
+    padding: 0.8rem 1.5rem; /* Reduz o padding em tablets */
   }
 
   @media (max-width: 480px) {
-    font-size: 10px;
-    padding: 6px 4px;
-    border-radius: 4px;
+    font-size: 0.8rem; /* Fonte menor no mobile */
+    padding: 1rem 3rem; /* Compacta o botão no mobile */
   }
 }

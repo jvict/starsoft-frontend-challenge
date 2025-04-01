@@ -1,31 +1,37 @@
 import React from "react";
 import { useState } from "react";
 import styles from "../styles/FinishedButton.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearState } from "@/store/slices/cartSlie";
+import { RootState } from "@/store";
 
 
 interface FinishedButtonProps {
   onClose?: () => void;
 }
 
-const FinishedButton : React.FC<FinishedButtonProps> = ({onClose}) => {
+const FinishedButton: React.FC<FinishedButtonProps> = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const dispatch = useDispatch();
+  const { items, total } = useSelector((state: RootState) => state.cart);
 
   const handleClick = () => {
- 
-    if (isLoading || isCompleted) return;
+    if (total > 0) {
+      if (isLoading || isCompleted) return;
 
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsCompleted(true);
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsCompleted(true);
 
-      dispatch(clearState());
-      if (onClose) onClose()
-    }, 3000); 
+        dispatch(clearState());
+        if (onClose) onClose()
+      }, 3000);
+
+    } else {
+      console.warn("Nenhum produto no carrinho ! ")
+    }
   };
 
   return (
